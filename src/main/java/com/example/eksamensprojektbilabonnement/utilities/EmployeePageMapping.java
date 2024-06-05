@@ -12,7 +12,7 @@ public class EmployeePageMapping {
     public EmployeePageMapping() {
         employeePages = new HashMap<>();
         // Initialize with default pages for each employeeType
-        employeePages.put(EmployeeType.ADMIN, "redirect:/admin_inventory");
+        employeePages.put(EmployeeType.ADMIN, "redirect:/admin_homepage");
         employeePages.put(EmployeeType.BUSINESS_DEVELOPER, "redirect:/rented_cars");
         employeePages.put(EmployeeType.DAMAGE_MANAGEMENT, "redirect:/damage_management_inventory");
         employeePages.put(EmployeeType.LEASE_REGISTRATION, "redirect:/lease_registration_inventory");

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/admin.css">
+    <link rel="stylesheet" href="/reusables.css">
+    <link rel="stylesheet" href="/fragments.css">
+</head>
+<body>
+
+<header>
+    <div th:insert="~{home/fragments :: header('Change Log')}"></div>
+    <div th:insert="~{home/fragments :: logo}"></div>
+    <div th:insert="~{home/fragments :: admin_navbar('/')}"></div>
+</header>
+
+<body>
+<div class="grid-container">
+    <div th:each="changelog : ${changeLogs}"  >
+        <p>ID: <span th:text="${changelog.logId}"></span></p>
+        <p>Changed By: <span th:text="${changelog.changedBy}"></span></p>
+        <p>Change: <span th:text="${changelog.change_}"></span></p>
+        <p>Table Changed: <span th:text="${changelog.tableChanged}"></span></p>
+        <p>Action type: <span th:text ="${changelog.actionType}"></span></p>
+        <p>Timestamped: <span th:text="${changelog.timestamped}"></span></p>
+
+    </div>
+</div>
+<footer>
+    <div th:insert="~{home/fragments :: footer}"></div>
+</footer>
+</body>
+</html>
