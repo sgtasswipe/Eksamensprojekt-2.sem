@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @Component
 public class EmployeePageMapping {
     private Map<EmployeeType, String> employeePages; //hvorfor map heroppe og hashmap længere nede?

@@ -32,6 +32,24 @@ public class ScheduledTasks {
                 logger.error("Failed to update lease statuses: ", e);
             }
         }
+    @Scheduled(fixedRate = 3600000) // Every hour
+    public void updateLeaseStatusesInDatabase2() {
+        logger.info("Scheduled task started");
+        try {
+            List<String> upcomingLeases = carService.findCarsWithUpcomingLeases();
+            logger.info("Found {} cars with upcoming leases", upcomingLeases.size());
+            for (String chassisNumber : upcomingLeases) {
+                logger.info("Updating lease status for chassis: {}", chassisNumber);
+                carService.changeCarStateInLeasedCars(chassisNumber, "GETTING_PREPARED");
+                logger.info("Updated lease status for chassis: {}", chassisNumber);
+            }
+        } catch (Exception e) {
+            logger.error("Failed to update lease statuses: ", e);
+        }
+        logger.info("Scheduled task completed");
+    }
+
+
 
     @Scheduled(fixedRate = 43200000) // Every 12 hours
     public void anonymizeCustomerAfterFiveYears() {
